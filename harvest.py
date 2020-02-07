@@ -73,11 +73,9 @@ def make_melon_type_lookup(melon_types):
     for melon in melon_types:
         key = melon.code
         value = melon
-        melon_dict[key].append(value)
+        melon_dict[key] = value
 
-    return melon_dict    
-
-    # Fill in the rest
+    return melon_dict  
 
 ############
 # Part 2   #
@@ -85,19 +83,62 @@ def make_melon_type_lookup(melon_types):
 
 class Melon(object):
     """A melon in a melon harvest."""
+    def __init__(self, melon_type, shape_rating, color_rating, harvested_from, harvested_by):
+        self.melon_type = melon_type
+        self.shape_rating = shape_rating
+        self.color_rating = color_rating
+        self.harvested_from = harvested_from
+        self.harvested_by = harvested_by
 
-    # Fill in the rest
-    # Needs __init__ and is_sellable methods
+    def is_sellable(self):
+
+        if self.harvested_from != 3:
+            if self.shape_rating > 5 and self.color_rating > 5:
+                self.is_sellable = True
+            else:
+                self.is_sellable = False
+        else:
+            self.is_sellable = False
+
 
 def make_melons(melon_types):
     """Returns a list of Melon objects."""
+    harvested_list = []
 
-    # Fill in the rest
+    melon_1 = Melon(melons_by_id['yw'], 8, 7, 2, 'Sheila')
+    harvested_list.append(melon_1)
+    melon_2 = Melon(melons_by_id['yw'], 3, 4, 2, 'Sheila')
+    harvested_list.append(melon_2)
+    melon_3 = Melon(melons_by_id['yw'], 9, 8, 3, 'Sheila')
+    harvested_list.append(melon_3)
+    melon_4 = Melon(melons_by_id['cas'], 10, 6, 35, 'Michael')
+    harvested_list.append(melon_4)
+    melon_5 = Melon(melons_by_id['cren'], 8, 9, 35, 'Michael')
+    harvested_list.append(melon_5)
+    melon_6 = Melon(melons_by_id['cren'], 8, 2, 35, 'Michael')
+    harvested_list.append(melon_6)
+    melon_7 = Melon(melons_by_id['cren'], 2, 3, 4, 'Michael')
+    harvested_list.append(melon_7)
+    melon_8 = Melon(melons_by_id['musk'], 6, 7, 4, 'Michael')
+    harvested_list.append(melon_8)
+    melon_9 = Melon(melons_by_id['yw'], 7, 10, 3, 'Sheila')
+    harvested_list.append(melon_9)
+
+    return harvested_list
+
 
 def get_sellability_report(melons):
     """Given a list of melon object, prints whether each one is sellable."""
+    for melon in melons:
+        if 
+
+
 
     # Fill in the rest 
 
 
 melon_types = make_melon_types()
+
+melons_by_id = make_melon_type_lookup(melon_types)
+
+melons = make_melons(melon_types)
